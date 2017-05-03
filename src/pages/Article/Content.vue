@@ -1,0 +1,14 @@
+<template>
+
+</template>
+
+<script>
+
+  export default {
+    name: ''
+  }
+</script>
+
+<style lang='scss' scoped>
+  @import "../../assets/css/base";
+</style>

@@ -5,19 +5,22 @@
     </div>
     <article-list></article-list>
     <Loadmore></Loadmore>
+    <foot></foot>
   </div>
 </template>
 
 <script>
   import Index from './Header.vue'
-  import ArticleList from '../../components/ArticleList.vue'
-  import Loadmore from '../../components/LoadMore.vue'
+  import ArticleList from './ArticleList.vue'
+  import Loadmore from './LoadMore.vue'
+  import Foot from './Footer.vue'
   export default {
     name: 'my',
     components: {
       Index,
       ArticleList,
-      Loadmore
+      Loadmore,
+      Foot
     }
   }
 </script>

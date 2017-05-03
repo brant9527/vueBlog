@@ -14,6 +14,19 @@
     components: {
       Top,
       Foot
+    },
+    methods: {
+      routerChange () {
+        this.$store.dispatch('ROUTER_CHANGE', this.$route.path)
+      }
+    },
+    created () {
+      this.routerChange()
+    },
+    watch: {
+      '$route': function () {
+        this.routerChange()
+      }
     }
   }
 </script>

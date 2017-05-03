@@ -23,4 +23,7 @@
   .mint-swipe{
     height: 2.764rem;
   }
+  img{
+    margin: 0 auto;
+  }
 </style>

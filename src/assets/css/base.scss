@@ -16,6 +16,12 @@ body {
 .box{
   padding: 48px 0 80px 0;
 }
+.badge{
+  display: inline-block;
+  padding: 3px 2px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
 .pull-left {
   float: left;
 }

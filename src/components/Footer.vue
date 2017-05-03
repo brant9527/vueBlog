@@ -1,5 +1,5 @@
 <template>
-  <mt-tabbar fixed  v-model="selected">
+  <mt-tabbar fixed v-if="footerHide" v-model="selected">
     <mt-tab-item id="/home">
       <i slot="icon" class="iconfont icon-shouye-copy"></i>
       首页
@@ -19,21 +19,14 @@
 </template>
 
 <script>
-
+  import { mapGetters } from 'vuex'
   export default {
     name: 'foot',
-    data () {
-      return {
-        selected: '/home'
-      }
-    },
-    created () {
-      this.selected = this.$route.path
-    },
-    watch: {
-      '$route': function (to, from) {
-        this.selected = to.path
-      }
+    computed: {
+      ...mapGetters([
+        'selected',
+        'footerHide'
+      ])
     }
   }
 </script>

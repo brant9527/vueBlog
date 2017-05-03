@@ -21,7 +21,7 @@
     background: url("//cdn2.jianshu.io/assets/mobile/index_phone-e47b04f8b57ad885770ec579c4341259.png") no-repeat right -48px;
     background-size: 128px auto;
     color: $fontColor1;
-    padding: 20px;
+    padding: 15px;
     ul{
       line-height: 30px;
     }

@@ -13,10 +13,9 @@
 <script>
   import Index from './Index.vue'
   import Banner from './Banner.vue'
-  import ArticleList from '../../components/ArticleList.vue'
-  import Loadmore from '../../components/LoadMore.vue'
+  import ArticleList from './ArticleList.vue'
+  import Loadmore from './LoadMore.vue'
   import Buttons from './Buttons.vue'
-
   export default {
     name: 'home',
     components: {
