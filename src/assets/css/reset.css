@@ -29,10 +29,6 @@ footer,header,hgroup,menu,nav,section,summary {
   display:block;
 }
 
-ul {
-  list-style:none;
-}
-
 blockquote, q {
   quotes:none;
 }

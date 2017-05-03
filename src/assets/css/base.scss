@@ -1,6 +1,6 @@
 //字体颜色
 $fontColor1:#333;$fontColor2:#666;$fontColor3:#999;
-$mainColor:#F60;$linkColor:#39f;
+$mainColor:#F60;$linkColor:#39f;$blackColor:#000;
 //字体大小
 $fontSize1:12px;$fontSize2:14px;$fontSize3:16px;
 body {
@@ -11,6 +11,10 @@ body {
 .container {
   width: 100%;
   padding: 0 15px;
+  box-sizing: border-box;
+}
+.box{
+  padding: 48px 0 80px 0;
 }
 .pull-left {
   float: left;
@@ -18,10 +22,9 @@ body {
 .pull-right {
   float: right;
 }
-.img-responsive {
+.img-responsive{
   display: block;
   max-width: 100%;
-  max-height: 100%;
 }
 .clearfix:after {
   content: '';
@@ -90,5 +93,8 @@ body {
 }
 .blcok-center{
   margin: 0 auto;
+}
+.list{
+  list-style: none;
 }
 

@@ -1,0 +1,67 @@
+<template>
+  <mt-tabbar fixed  v-model="selected">
+    <mt-tab-item id="/home">
+      <i slot="icon" class="iconfont icon-shouye-copy"></i>
+      首页
+      <router-link to="/home"></router-link>
+    </mt-tab-item>
+    <mt-tab-item id="/write">
+      <i slot="icon" class="iconfont icon-iconfontcolor32"></i>
+      写文章
+      <router-link to="/write"></router-link>
+    </mt-tab-item>
+    <mt-tab-item id="/my">
+      <i slot="icon" class="iconfont icon-wode"></i>
+      我的
+      <router-link to="/my"></router-link>
+    </mt-tab-item>
+  </mt-tabbar>
+</template>
+
+<script>
+
+  export default {
+    name: 'foot',
+    data () {
+      return {
+        selected: '/home'
+      }
+    },
+    created () {
+      this.selected = this.$route.path
+    },
+    watch: {
+      '$route': function (to, from) {
+        this.selected = to.path
+      }
+    }
+  }
+</script>
+
+<style lang='scss' scoped>
+  @import "../assets/css/base.scss";
+  .iconfont{
+    font-size: 24px;
+  }
+
+  .mint-tab-item{
+    color: $fontColor1;
+    position: relative;
+
+    a{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  .mint-tabbar{
+    background: #FFF;
+    border-top: 1px solid #DDD;
+
+    > .mint-tab-item.is-selected{
+      background: #FFF;
+    }
+  }
+</style>
