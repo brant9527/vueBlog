@@ -5,19 +5,19 @@
     <div class="form-field">
       <p>
         <i class="iconfont icon-yonghu"></i>
-        <input type="text" placeholder="手机号">
+        <input type="text" placeholder="手机号" v-model="phone">
       </p>
       <p>
         <i class="iconfont icon-unie614"></i>
-        <input type="password" placeholder="密码">
+        <input type="password" placeholder="密码" v-model="password">
       </p>
       <p>
         <i class="iconfont icon-anquan"></i>
-        <input type="text" placeholder="请输入图片中的文字">
+        <input type="text" placeholder="请输入图片中的文字" v-model="code">
         <img src="http://upload.jianshu.io/image_captchas/67b2da98-55b8-43fa-aa33-fe7763fa23f6.jpg" height="45px" width="100px">
       </p>
     </div>
-    <mt-button type="primary" size="large">登录</mt-button>
+    <mt-button type="primary" size="large" @click="login">登录</mt-button>
     <p class="go-register">
       暂无账号,<router-link to="/register">点击注册</router-link>
     </p>
@@ -34,9 +34,47 @@
 </template>
 
 <script>
-
+  import {Toast} from 'mint-ui'
   export default {
-    name: ''
+    name: '',
+    data () {
+      return {
+        phone: '',
+        password: '',
+        code: ''
+      }
+    },
+    methods: {
+      login () {
+        const storage = window.localStorage
+        const userInfo = storage.getItem('userInfo')
+        if (!userInfo) {
+          const phoneReg = /^1[34578]\d{9}$/
+          if (!this.phone || !phoneReg.test(this.phone)) {
+            Toast({
+              message: '请输入正确的手机号',
+              iconClass: 'iconfont icon-cuowu'
+            })
+          } else if (!this.password) {
+            Toast({
+              message: '密码不能为空',
+              iconClass: 'iconfont icon-cuowu'
+            })
+          } else {
+            this.$http.get(`http://localhost:3000/user?phone=${this.phone}&password=${this.password}`)
+              .then((res) => {
+                Toast({
+                  message: '登录成功',
+                  iconClass: 'iconfont icon-zhengque'
+                })
+                const userInfo = res.data
+                storage.setItem('userInfo', JSON.stringify(userInfo))
+                this.$router.push({ path: 'home' })
+              })
+          }
+        }
+      }
+    }
   }
 </script>
 

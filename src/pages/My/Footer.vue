@@ -3,7 +3,7 @@
     <a class="avatar">
       <img src="//upload.jianshu.io/users/upload_avatars/2758117/247d868bf5d6.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/108/h/108" alt="">
     </a>
-    <a href="javascript:void(0);">退出</a>
+    <a href="javascript:void(0);" @click="signout">退出</a>
     <b>|</b>
     <router-link to="/home">热门文章</router-link>
   </footer>
@@ -12,7 +12,13 @@
 <script>
 
   export default {
-    name: ''
+    name: '',
+    methods: {
+      signout () {
+        window.localStorage.removeItem('userInfo')
+        window.location.reload()
+      }
+    }
   }
 </script>
 

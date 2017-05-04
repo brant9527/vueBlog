@@ -14,7 +14,7 @@ const state = {
 
 const mutations = {
   [GET_INDEX_ARTICLE] (state) {
-    axios.get('/static/index.json')
+    axios.get('http://localhost:3000/articles?_start=0&_end=10')
       .then(function (res) {
         state.index_article = res.data
       })
@@ -23,7 +23,7 @@ const mutations = {
       })
   },
   [LOADMORE_ARTICLE] (state) {
-    axios.get('/static/index_more.json')
+    axios.get('http://localhost:3000/articles?_start=10&_end=20')
       .then(function (res) {
         state.index_article.push(...res.data)
       })

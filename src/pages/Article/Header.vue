@@ -1,15 +1,15 @@
 <template>
-  <header class="box article">
+  <header class="article">
     <div class="container">
-      <h1>从阅读到写作,如何把知识转化率提高到100%?</h1>
+      <h1>{{article.title}}</h1>
       <div class="author-info">
         <a class="avatar">
-          <img src="//upload.jianshu.io/users/upload_avatars/31282/31c4482f3f73.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180" alt="">
+          <img :src="article.user.avatar" alt="">
         </a>
-        <span class="name">一元亦有用</span>
+        <span class="name">{{article.user.nickname}}</span>
         <span class="badge">签约作者</span>
       </div>
-      <div class="time">2017.05.02 18:40</div>
+      <div class="time">{{article.first_shared_at}}</div>
     </div>
   </header>
 </template>
@@ -17,14 +17,16 @@
 <script>
 
   export default {
-    name: ''
+    name: '',
+    props: ['article']
   }
 </script>
 
 <style lang='scss' scoped>
   @import "../../assets/css/base";
   .article{
-    margin-top: 20px;
+    margin-top: 80px;
+    margin-bottom: 30px;
   }
   h1{
     font-size: 28px;

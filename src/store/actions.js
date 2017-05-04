@@ -14,7 +14,6 @@ export default{
     commit(types.ROUTER_CHANGE, path)
   },
   SHOWLOADING: ({commit}) => {
-    console.log(111)
     commit(types.SHOWLOADING)
   },
   HIDELOADING: ({commit}) => {

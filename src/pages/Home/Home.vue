@@ -3,21 +3,43 @@
     <Index></Index>
     <Banner></Banner>
     <keep-alive>
-      <article-list></article-list>
+      <article-list :articles="index_article"></article-list>
     </keep-alive>
-    <Loadmore></Loadmore>
-    <buttons></buttons>
+    <Loadmore :load="load"></Loadmore>
+    <buttons v-if="!userInfo"></buttons>
   </div>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import Index from './Index.vue'
   import Banner from './Banner.vue'
-  import ArticleList from './ArticleList.vue'
-  import Loadmore from './LoadMore.vue'
+  import ArticleList from '../../components/ArticleList.vue'
+  import Loadmore from '../../components/LoadMore.vue'
   import Buttons from './Buttons.vue'
   export default {
     name: 'home',
+    data () {
+      return {
+        load: 'LOADMORE_ARTICLE'
+      }
+    },
+    mounted () {
+      this.get()
+    },
+    methods: {
+      ...mapActions({
+        get: 'GET_INDEX_ARTICLE'
+      })
+    },
+    computed: {
+      ...mapGetters([
+        'index_article'
+      ]),
+      userInfo () {
+        return JSON.parse(window.localStorage.getItem('userInfo'))
+      }
+    },
     components: {
       Index,
       Banner,

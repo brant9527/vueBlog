@@ -3,7 +3,7 @@
     <h4>文章</h4>
     <loading></loading>
     <ul class="article-list container list">
-      <router-link v-for="article in index_article" :to="'/article/'+article.id" tag="li" :key="article">
+      <router-link v-for="article in articles" :to="'/article/'+article.id" tag="li" :key="article">
           <img  v-lazy="article.list_image_url" v-if="article.list_image_url" alt="">
           <div>
             <div class="title clearfix">
@@ -25,27 +25,15 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+
   export default {
     name: '',
-    mounted () {
-      this.get()
-    },
-    methods: {
-      ...mapActions({
-        get: 'GET_INDEX_ARTICLE'
-      })
-    },
-    computed: {
-      ...mapGetters([
-        'index_article'
-      ])
-    }
+    props: ['articles']
   }
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base";
+  @import "../assets/css/base";
   h4{
     background-color: #F5F5F5;
     padding:15px 18px;

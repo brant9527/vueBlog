@@ -5,19 +5,20 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+//  import { mapActions } from 'vuex'
   export default {
     name: '',
+    props: ['load'],
     methods: {
-      ...mapActions({
-        loadmore: 'LOADMORE_ARTICLE'
-      })
+      loadmore () {
+        this.$store.dispatch(this.load)
+      }
     }
   }
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base";
+  @import "../assets/css/base";
   .loadmore{
     text-align:center;
     padding: 20px;

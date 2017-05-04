@@ -4,24 +4,24 @@
     <h3 class="text-center">注册账号</h3>
     <div class="form-field">
       <p>
+        <i class="iconfont icon-shouji"></i>
+        <input type="text" placeholder="手机号" v-model="userInfo.phone">
+      </p>
+      <p>
         <i class="iconfont icon-yonghu"></i>
-        <input type="text" placeholder="手机号">
+        <input type="text" placeholder="用户名" v-model="userInfo.username">
       </p>
       <p>
         <i class="iconfont icon-unie614"></i>
-        <input type="password" placeholder="密码">
-      </p>
-      <p>
-        <i class="iconfont icon-unie614"></i>
-        <input type="password" placeholder="确认密码">
+        <input type="password" placeholder="密码" v-model="userInfo.password">
       </p>
       <p>
         <i class="iconfont icon-anquan"></i>
-        <input type="text" placeholder="请输入图片中的文字">
+        <input type="text" placeholder="请输入图片中的文字" v-model="userInfo.code">
         <img src="http://upload.jianshu.io/image_captchas/67b2da98-55b8-43fa-aa33-fe7763fa23f6.jpg" height="45px" width="100px">
       </p>
     </div>
-    <mt-button type="primary" size="large">注册</mt-button>
+    <mt-button type="primary" size="large" @click="register">注册</mt-button>
     <p class="go-register">
       已有账号,<router-link to="/login">点击登录</router-link>
     </p>
@@ -38,16 +38,63 @@
 </template>
 
 <script>
-
+  import {Toast} from 'mint-ui'
   export default {
-    name: ''
+    name: '',
+    data () {
+      return {
+        userInfo: {
+          phone: '',
+          username: '',
+          password: '',
+          code: ''
+        }
+      }
+    },
+    methods: {
+      register () {
+        const phoneReg = /^1[34578]\d{9}$/
+        if (!this.userInfo.phone || !phoneReg.test(this.userInfo.phone)) {
+          Toast({
+            message: '手机格式不正确',
+            iconClass: 'iconfont icon-cuowu'
+          })
+        } else if (!this.userInfo.username) {
+          Toast({
+            message: '用户名不能为空',
+            iconClass: 'iconfont icon-cuowu'
+          })
+        } else if (!this.userInfo.password) {
+          Toast({
+            message: '密码不能为空',
+            iconClass: 'iconfont icon-cuowu'
+          })
+        } else if (!this.userInfo.code) {
+          Toast({
+            message: '请输入验证码',
+            iconClass: 'iconfont icon-cuowu'
+          })
+        } else {
+          this.$http.post('http://localhost:3000/user', this.userInfo)
+            .then((res) => {
+              Toast({
+                message: '注册成功',
+                iconClass: 'iconfont icon-zhengque'
+              })
+              const storage = window.localStorage
+              const userInfo = res.data
+              storage.setItem('userInfo', JSON.stringify(userInfo))
+              this.$router.push({ path: 'home' })
+            })
+        }
+      }
+    }
   }
 </script>
 
 <style lang='scss' scoped>
   @import "../../assets/css/base.scss";
   .register{
-
     .close{
       position: absolute;
       right: 15px;

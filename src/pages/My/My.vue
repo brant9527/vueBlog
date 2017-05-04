@@ -1,25 +1,45 @@
 <template>
   <div class="box">
     <div class="container">
-      <index></index>
+      <top :userInfo="userInfo"></top>
     </div>
-    <article-list></article-list>
-    <Loadmore></Loadmore>
+    <div v-if="articles">
+      <article-list :articles="articles"></article-list>
+    </div>
     <foot></foot>
   </div>
 </template>
 
 <script>
-  import Index from './Header.vue'
-  import ArticleList from './ArticleList.vue'
-  import Loadmore from './LoadMore.vue'
+  import Top from './Header.vue'
+  import ArticleList from '../../components/ArticleList.vue'
   import Foot from './Footer.vue'
   export default {
     name: 'my',
+    data () {
+      return {
+        userInfo: {},
+        articles: []
+      }
+    },
+    mounted () {
+      const userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+      if (!userInfo) {
+        this.$router.push({path: '/login'})
+      } else {
+        this.$http.get(`http://localhost:3000/user?id=${userInfo[0].id}`)
+          .then((res) => {
+            this.userInfo = res.data[0]
+          })
+        this.$http.get(`http://localhost:3000/articles?user.id=${userInfo[0].id}`)
+          .then((res) => {
+            this.articles = res.data
+          })
+      }
+    },
     components: {
-      Index,
+      Top,
       ArticleList,
-      Loadmore,
       Foot
     }
   }
