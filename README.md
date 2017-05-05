@@ -8,6 +8,10 @@
 # install dependencies
 npm install
 
+# start server
+cd static
+json-server db.json -w -p 3000
+
 # serve with hot reload at localhost:8080
 npm run dev
 
