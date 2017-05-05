@@ -63,13 +63,20 @@
           } else {
             this.$http.get(`http://localhost:3000/user?phone=${this.phone}&password=${this.password}`)
               .then((res) => {
-                Toast({
-                  message: '登录成功',
-                  iconClass: 'iconfont icon-zhengque'
-                })
-                const userInfo = res.data
-                storage.setItem('userInfo', JSON.stringify(userInfo))
-                this.$router.push({ path: 'home' })
+                if (res.data[0]) {
+                  Toast({
+                    message: '登录成功',
+                    iconClass: 'iconfont icon-zhengque'
+                  })
+                  const userInfo = res.data
+                  storage.setItem('userInfo', JSON.stringify(userInfo))
+                  this.$router.push({ path: 'home' })
+                } else {
+                  Toast({
+                    message: '用户名或密码错误',
+                    iconClass: 'iconfont icon-cuowu'
+                  })
+                }
               })
           }
         }

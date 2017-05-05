@@ -75,16 +75,29 @@
             iconClass: 'iconfont icon-cuowu'
           })
         } else {
-          this.$http.post('http://localhost:3000/user', this.userInfo)
-            .then((res) => {
-              Toast({
-                message: '注册成功',
-                iconClass: 'iconfont icon-zhengque'
-              })
-              const storage = window.localStorage
-              const userInfo = res.data
-              storage.setItem('userInfo', JSON.stringify(userInfo))
-              this.$router.push({ path: 'home' })
+          this.$http.get(`http://localhost:3000/user?phone=${this.userInfo.phone}`)
+            .then(function (res) {
+              if (res.data[0]) {
+                Toast({
+                  message: '该手机已被注册',
+                  iconClass: 'iconfont icon-cuowu'
+                })
+              } else {
+                return Promise.resolve
+              }
+            })
+            .then(() => {
+              this.$http.post('http://localhost:3000/user', this.userInfo)
+                .then((res) => {
+                  Toast({
+                    message: '注册成功',
+                    iconClass: 'iconfont icon-zhengque'
+                  })
+                  const storage = window.localStorage
+                  const userInfo = res.data
+                  storage.setItem('userInfo', JSON.stringify(userInfo))
+                  this.$router.push({ path: 'home' })
+                })
             })
         }
       }

@@ -80,7 +80,7 @@
     position: relative;
     .intros-content{
       display: inline-block;
-      width:220px;
+      width: 160px;
       overflow: hidden;
       text-overflow:ellipsis;
       white-space: nowrap;
@@ -96,6 +96,8 @@
     .edit{
       color: $linkColor;
       text-decoration: none;
+      position: relative;
+      top: -2px;
     }
     .avatar{
 
