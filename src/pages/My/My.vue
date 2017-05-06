@@ -46,5 +46,4 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base.scss";
 </style>

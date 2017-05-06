@@ -18,7 +18,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/css/base";
+  @import "../assets/css/color.scss";
   .loadmore{
     text-align:center;
     padding: 20px;

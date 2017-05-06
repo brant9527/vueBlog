@@ -82,22 +82,20 @@
                   message: '该手机已被注册',
                   iconClass: 'iconfont icon-cuowu'
                 })
+                return
               } else {
-                return Promise.resolve
-              }
-            })
-            .then(() => {
-              this.$http.post('http://localhost:3000/user', this.userInfo)
-                .then((res) => {
-                  Toast({
-                    message: '注册成功',
-                    iconClass: 'iconfont icon-zhengque'
+                this.$http.post('http://localhost:3000/user', this.userInfo)
+                  .then((res) => {
+                    Toast({
+                      message: '注册成功',
+                      iconClass: 'iconfont icon-zhengque'
+                    })
+                    const storage = window.localStorage
+                    const userInfo = res.data
+                    storage.setItem('userInfo', JSON.stringify(userInfo))
+                    this.$router.push({ path: 'home' })
                   })
-                  const storage = window.localStorage
-                  const userInfo = res.data
-                  storage.setItem('userInfo', JSON.stringify(userInfo))
-                  this.$router.push({ path: 'home' })
-                })
+              }
             })
         }
       }
@@ -106,7 +104,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base.scss";
+  @import "../../assets/css/color.scss";
   .register{
     .close{
       position: absolute;

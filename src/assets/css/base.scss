@@ -1,12 +1,8 @@
-//字体颜色
-$fontColor1:#333;$fontColor2:#666;$fontColor3:#999;
-$mainColor:#F60;$linkColor:#39f;$blackColor:#000;
-//字体大小
-$fontSize1:12px;$fontSize2:14px;$fontSize3:16px;
+
 body {
   font-family: Helvetica, sans-serif;
-  color: $fontColor2;
-  font-size: $fontSize2;
+  color: #666;
+  font-size: 14px;
 }
 .container {
   width: 100%;

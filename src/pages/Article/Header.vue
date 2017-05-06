@@ -23,7 +23,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base";
+  @import "../../assets/css/color.scss";
   .article{
     margin-top: 80px;
     margin-bottom: 30px;

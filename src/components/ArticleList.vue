@@ -33,7 +33,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/css/base";
+  @import "../assets/css/color.scss";
   h4{
     background-color: #F5F5F5;
     padding:15px 18px;

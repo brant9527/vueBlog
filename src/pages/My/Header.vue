@@ -74,7 +74,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base.scss";
+  @import "../../assets/css/color.scss";
   .person-info{
     padding: 20px 0 15px;
     position: relative;

@@ -19,7 +19,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/css/base.scss";
+  @import "../assets/css/color.scss";
   .mint-header{
     background-color: #FFF;
     height: 48px;

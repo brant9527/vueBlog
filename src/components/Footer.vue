@@ -32,7 +32,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../assets/css/base.scss";
+  @import "../assets/css/color.scss";
   .iconfont{
     font-size: 24px;
   }

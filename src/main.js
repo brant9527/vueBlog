@@ -13,6 +13,7 @@ import App from './App'
 Vue.use(MintUI)
 Vue.use(Loading)
 
+axios.defaults.baseURL = 'http://localhost:3000'  // 配置axios默认的baseURL
 axios.interceptors.request.use(function (config) {
   store.dispatch('SHOWLOADING')
   return config

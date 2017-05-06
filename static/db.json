@@ -5,18 +5,8 @@
       "phone": "13617322615",
       "username": "Leo",
       "password": "123456",
-      "code": "46456465",
       "intros": "随便写点什么吧",
       "unpublic": {}
-    },
-    {
-      "id": 2,
-      "phone": "13786269078",
-      "username": "娜女子",
-      "password": "123456",
-      "code": "46456465",
-      "unpublic": {},
-      "intros": "总结一些学习经验"
     }
   ],
   "articles": [

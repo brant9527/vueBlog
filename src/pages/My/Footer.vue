@@ -23,7 +23,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base.scss";
+  @import "../../assets/css/color.scss";
   footer{
     text-align: center;
     padding: 10px 0;

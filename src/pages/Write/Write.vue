@@ -88,7 +88,7 @@
 </script>
 
 <style lang='scss' scoped>
-  @import "../../assets/css/base";
+  @import "../../assets/css/color.scss";
   .container:first-child{
     margin-top: 10px;
   }
