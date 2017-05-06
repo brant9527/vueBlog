@@ -1,6 +1,6 @@
 # 仿照简书移动端样式写的一个Vue.js2.0项目
 
-# 技术架构: Vue.js + Vuex + axios + mint-ui + Vue-router + sass
+## 技术架构: Vue.js + Vuex + axios + mint-ui + Vue-router + sass
 
 # 开始
 
